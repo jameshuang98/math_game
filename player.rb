@@ -9,9 +9,4 @@ class Player
         @name = name
     end
 
-    # def update_score(correct)
-    #     if (!correct)
-    #         score--
-    #     end
-    # end
 end

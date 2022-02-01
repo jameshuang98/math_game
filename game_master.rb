@@ -1,5 +1,6 @@
 class GameMaster
     attr_accessor :player1, :player2
+    
 
     def initialize(player1, player2)
         @player1 = player1
@@ -17,11 +18,10 @@ class GameMaster
             check_answer?(user_answer, correct_answer)
             output_results
             puts "------------"
-            switchPlayer
+            switch_player
         end
-
-        switchPlayer
-        puts "#{@current_player.name} wins with a score of #{@current_player.score}/#{@current_player.initial_score}"    
+        
+        puts "#{determine_winner.name} wins with a score of #{determine_winner.score}/#{determine_winner.initial_score}"    
 
     end
 
@@ -48,12 +48,18 @@ class GameMaster
     end
 
     
-    def switchPlayer
-        if (@current_player == @player1)
-            @current_player = @player2
-        else
-            @current_player = @player1
-        end
+    def switch_player
+        # if (@current_player == @player1)
+        #     @current_player = @player2
+        # else
+        #     @current_player = @player1
+        # end
+
+        @current_player == @player1 ? @current_player = @player2 : @current_player = @player1
     end
-    
+
+    def determine_winner
+        @player1.score == 0 ?  @player2 : @player1
+    end
+
 end
